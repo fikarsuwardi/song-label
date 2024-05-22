@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Songs</title>
+</head>
+<body>
+    <h1>Ini adalah Edit Songs</h1>
+    <form action="/songs/<%= detail.id%>/edit" method="POST">
+        <label>Title</label><br>
+        <input type="text" value="<%= detail.title%>" name="title"><br>
+
+        <label>Band Name</label><br>
+        <input type="text" value="<%= detail.bandName%>" name="bandName"><br>
+
+        <label>Duration</label><br>
+        <input type="number" value="<%= detail.duration%>" name="duration"><br>
+
+        <label>Genre</label><br>
+        <select name="genre">
+            <% ['Rock','Pop', 'Damgdut', 'Jazz', 'Other'].forEach(el => { %>
+                <% if ( el === detail.genre) {%>
+                <option selected value="<%= el %>"><%= el %></option> 
+                <%} else {%>
+                    <option value="<%= el %>"><%= el %></option>
+                <% } %>
+            <% }) %>
+        </select><br>
+
+        <label>Lirik</label><br>
+        <textarea name="lyric" rows="4" cols="50"><%= detail.lyric %></textarea><br>
+
+        <label>Image</label><br>
+        <input type="url" name="imageUrl" value="<%= detail.imageUrl %>"><br>
+        <label>Label</label><br>
+        <select name ="labelId">
+            <% labels.forEach(el => {%>
+                <% if (el.name === detail.companyName) { %>
+                    <option selected value="<%=el.id %>"><%= el.name%></option>
+                <%} else {%>
+                    <option value ="<%= el.id %>"><%= el.name %></option>
+                <%}%>
+            <%})%>
+        </select><br>
+        <label>Create Date</label><br>
+        <input type="date" name="createdDate" value="<%= detail.secondDate %>"><br>
+        <input type="submit" value="Add">
+    </form>
+    <% if (errors) { %>
+        <% errors = errors.split(",") %>
+        <% errors.forEach(el => { %>
+            <p style="color: red;"><%= el %></p>
+        <% }) %>
+    <% } %> 
+</body>
+</html> 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+</head>
+<body>
+    <h1>Ini adalah Songs</h1>
+    <form action="/songs" method="get">
+        <input type="text" placeholder="Search..." name="search">
+        <button type="submit"><i>SEARCH</i></button>
+    </form> <br>
+
+    <a href="/songs/add">
+        <button type="button">Add</button>
+    </a>
+    <br>
+
+    <table border="1", cellspacing="0", cellpadding="15">
+        <tr>
+            <th>Title</th>
+            <th>Band Name</th>
+            <th>Duration</th>
+            <th>Genre</th>
+            <th>Total Vote</th>
+            <th>Action</th>
+        </tr>
+        <% for(let i = 0; i < data.length; i++) { %>
+        <tr>
+            <td><%= data[i].title %></td>
+            <td><%= data[i].bandName %></td>
+            <td><%= data[i].duration %></td>
+            <td><%= data[i].genre %></td>
+            <td><%= data[i].totalVote %></td>
+            <td>
+                <a href="/songs/<%= data[i].id %>">Read Song</a>
+                <a href="/songs/<%= data[i].id %>/edit">Edit</a>
+                <a href="/songs/<%= data[i].id %>/delete">Delete</a>
+            </td>
+            
+        </tr>
+        <% } %>
+    </table>
+</body>
+</html> 

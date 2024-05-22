@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Songs</title>
+</head>
+<body>
+    <h1>Ini adalah Detail Songs</h1>
+    <% for(let i = 0; i < data.length; i++) { %>
+
+    <h2><%= data[i].title %></h2>
+    <img src="<%= data[i].imageUrl %>" alt="" />
+    <p>Band Name: <%= data[i].bandName %></p>
+    <p>Duration: <%= data[i].duration %></p>
+    <p>genre: <%= data[i].genre %></p>
+    <p>Label Name: <%= data[i].companyName %></p>
+    <p>Tanggal diriilis: <%= data[i].formatDate %></p>
+    <p>Total Vote: <%= data[i].totalVote %></p>
+
+        <a href="/songs/<%= data[i].id%>/vote"><button>Vote</button></a>
+
+    <p>Lyric: <%= data[i].lyric %></p>    
+        
+    <% } %>
+    </a>
+</body>
+</html> 
